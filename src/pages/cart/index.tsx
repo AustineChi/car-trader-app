@@ -13,7 +13,7 @@ import {
 	Button,
 	CartWrapper,
 	DeleteIcon,
-} from "../../../styles/Order.styles";
+} from "../../../styles/Cart.styles";
 
 export default function Cart() {
 	const { carts, removeCartItem } = useContext(CartContext);
