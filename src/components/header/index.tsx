@@ -1,16 +1,20 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 import { MenuContext, Menu } from "../../../context/MenuContext";
+import { CartContext } from "../../../context/CartContext";
+
 import {
 	Wrapper,
 	HeaderLeftSection,
 	HeaderRightSection,
 	Title,
 	StyledLink,
+	NoOfItemsOnCart,
 } from "./Header.styles";
 
 export const Header = () => {
 	const { menu, setMenu } = useContext(MenuContext);
+	const { carts } = useContext(CartContext);
 
 	return (
 		<Wrapper>
@@ -30,8 +34,11 @@ export const Header = () => {
 					</Link>
 				</div>
 				<div onClick={() => setMenu(Menu.Cart)}>
+					<NoOfItemsOnCart>{carts?.length|| 0}</NoOfItemsOnCart>
 					<Link href="/cart">
-						<StyledLink active={menu === Menu.Cart}>Cart</StyledLink>
+						<StyledLink active={menu === Menu.Cart}>
+							Cart
+						</StyledLink>
 					</Link>
 				</div>
 				<div onClick={() => setMenu(Menu.Faq)}>

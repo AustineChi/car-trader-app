@@ -1,4 +1,6 @@
+import { useContext, useState } from "react";
 import Link from "next/link";
+import { CartContext } from "../../../context/CartContext";
 import { CarModel } from "../../../models/Car";
 
 import { Car, CarImage, CarName, CarDetails, Button } from "./CarCard.styles";
@@ -8,6 +10,10 @@ interface CarProps {
 }
 
 export const CarCard = ({ car }: CarProps) => {
+	const { carts, addCartItem, removeCartItem } = useContext(CartContext);
+	const [itemInCart, setItemInCart] = useState<boolean>(
+		!!carts.find((i) => i.id === car.id)
+	);
 	return (
 		<Car>
 			<Link
@@ -25,7 +31,14 @@ export const CarCard = ({ car }: CarProps) => {
 					<CarName>{`${car.make} ${car.model}`}</CarName>
 				</a>
 			</Link>
-			<Button>Add to Cart</Button>
+			<Button
+				onClick={() => {
+					!itemInCart ? addCartItem(car) : removeCartItem(car);
+					setItemInCart(!itemInCart);
+				}}
+			>
+				{!itemInCart ? "Add to Cart" : "Remove from Cart"}
+			</Button>
 		</Car>
 	);
 };

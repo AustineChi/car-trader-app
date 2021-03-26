@@ -26,7 +26,8 @@ export const HeaderRightSection = styled.div`
         display: block;
         padding: 20px 0;
         white-space: nowrap;
-        cursor: pointer
+        cursor: pointer;
+        position: relative
     }
     `
 export const StyledLink = styled.a`
@@ -35,6 +36,7 @@ export const StyledLink = styled.a`
     font-weight: bold;
     border-bottom:  ${({ active }) =>  active? '2px solid #4285f4' : ''};
 `;
+
 export const Title = styled.h2`
     color: #ff0;
     background-color: #4285f4;
@@ -43,4 +45,19 @@ export const Title = styled.h2`
     font-weight: 700;
     font-size: 19px;
     border-radius: 100px;
+`;
+
+export const NoOfItemsOnCart = styled.span`
+  position: absolute;
+  right: 0px;
+  top: 12px;
+  color: white;
+  background-color: #4285f4;
+  width: 18px;
+  height: 18px;
+  padding: 4px;
+  font-size: 10px;
+  border-radius: 50%;
+  font-weight: 700;
+
 `;
