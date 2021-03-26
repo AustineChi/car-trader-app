@@ -99,5 +99,13 @@ export const FormButton = styled.button`
     color: #fff;
     display: block;
     margin: auto;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
+    }
+    &:active {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(4px);
+    }
 
 `;

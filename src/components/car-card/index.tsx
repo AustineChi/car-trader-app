@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CarModel } from "../../../models/Car";
 
-import { Car, CarImage, CarName, Button } from "./CarCard.styles";
+import { Car, CarImage, CarName, CarDetails, Button } from "./CarCard.styles";
 
 interface CarProps {
 	car: CarModel | null;
@@ -19,6 +19,9 @@ export const CarCard = ({ car }: CarProps) => {
 						src={car.photoUrl}
 						alt={`${car.make} ${car.model}`}
 					/>
+					<CarDetails>
+						<div>Year:{car.year}</div> <div>€{car.price}</div>
+					</CarDetails>
 					<CarName>{`${car.make} ${car.model}`}</CarName>
 				</a>
 			</Link>

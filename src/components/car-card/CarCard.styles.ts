@@ -36,7 +36,6 @@ export const CarName = styled.div`
 
 `;
 
-
 export const Button = styled.button`
     padding: 0.4rem 1rem;
     font-size: 1rem;
@@ -49,5 +48,24 @@ export const Button = styled.button`
     background: #000;
     color: #fff;
     display: block;
-    width: 100%
+    width: 100%;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
+    }
+    &:active {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(4px);
+    }
+`;
+
+export const CarDetails = styled.div`
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
 `;
