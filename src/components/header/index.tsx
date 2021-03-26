@@ -1,12 +1,17 @@
+import { useContext, useEffect } from "react";
 import Link from "next/link";
+import { MenuContext, Menu } from "../../../context/MenuContext";
 import {
 	Wrapper,
 	HeaderLeftSection,
 	HeaderRightSection,
 	Title,
+	StyledLink,
 } from "./Header.styles";
 
 export const Header = () => {
+	const { menu, setMenu } = useContext(MenuContext);
+
 	return (
 		<Wrapper>
 			<HeaderLeftSection>
@@ -17,19 +22,21 @@ export const Header = () => {
 				</Link>
 			</HeaderLeftSection>
 			<HeaderRightSection>
-				<div>
+				<div onClick={() => setMenu(Menu.Home)}>
 					<Link href="/">
-						<a>Home</a>
+						<StyledLink active={menu === Menu.Home}>
+							Home
+						</StyledLink>
 					</Link>
 				</div>
-				<div>
+				<div onClick={() => setMenu(Menu.Cart)}>
 					<Link href="/cart">
-						<a>Cart</a>
+						<StyledLink active={menu === Menu.Cart}>Cart</StyledLink>
 					</Link>
 				</div>
-				<div>
+				<div onClick={() => setMenu(Menu.Faq)}>
 					<Link href="/faq">
-						<a>Faq</a>
+						<StyledLink active={menu === Menu.Faq}>Faq</StyledLink>
 					</Link>
 				</div>
 			</HeaderRightSection>

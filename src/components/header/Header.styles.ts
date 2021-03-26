@@ -22,19 +22,25 @@ export const HeaderRightSection = styled.div`
     order: 2;
     display: flex;
     flex-wrap: wrap;
-    && div {
+    & div {
         display: block;
-        padding: 15px;
+        padding: 20px 0;
         white-space: nowrap;
+        cursor: pointer
     }
     `
-
+export const StyledLink = styled.a`
+    padding: 10px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    border-bottom:  ${({ active }) =>  active? '2px solid #4285f4' : ''};
+`;
 export const Title = styled.h2`
     color: #ff0;
     background-color: #4285f4;
     padding: 10px 20px;
     text-align: center;
     font-weight: 700;
-    font-size: 28px;
+    font-size: 19px;
     border-radius: 100px;
 `;

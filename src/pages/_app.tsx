@@ -1,15 +1,16 @@
+import Head from 'next/head';
+import {MenuProvider} from '../../context/MenuContext'
 import { GlobalStyle } from "../../styles/Global.styles";
-import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <MenuProvider>
       <Head>
         <meta name="viewport" content="viewport-fit=cover" />
       </Head>
       <GlobalStyle />
 		<Component {...pageProps} />
-    </>
+    </MenuProvider>
   )
 }
 
