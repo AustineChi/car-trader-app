@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GetStaticProps } from "next";
+import { fetcher } from "../../../utils";
 import { FaqModel } from "../../../models/Faq";
-import { openDB } from "../../openDB";
 import {Header} from "../../components/header"
 import {Title, Container } from "../../../styles/General.styles";
 import {
@@ -44,7 +44,6 @@ export default function Faq({ faq }: FaqProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const db = await openDB();
-	const faq = await db.all("SELECT * FROM FAQ ORDER BY createDate DESC");
+	const faq = await fetcher("http://localhost:3000/api/faq");
 	return { props: { faq } };
 };

@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
+import { fetcher } from "../../../../../utils";
 import { CarModel } from "../../../../../models/Car";
-import { openDB } from "../../../../openDB";
 import { Header } from "../../../../components/header";
 import {CarCard} from "../../../../components/car-card";
 import { DetailsTable} from "../../../../components/details-table"
@@ -43,18 +42,12 @@ export default function CarDetails({ car }: CarProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const db = await openDB();
-	const car = await db.get<CarModel | null>(
-		"SELECT * FROM Car where id = ?",
-		params.id
-	);
+	const car = await fetcher(`http://localhost:3000/api/car/${params.id}`);
 	return { props: { car: car || null } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const db = await openDB();
-	const cars = await db.all("SELECT * FROM Car");
-
+	const cars = await fetcher("http://localhost:3000/api/cars");
 	return {
 		paths: cars.map((car) => ({
 			params: {

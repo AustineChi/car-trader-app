@@ -16,69 +16,68 @@ interface FilterProps {
 export const FilterForm = ({ filterFunction, brands }: FilterProps) => {
 	const [formData, setFormData] = React.useState<{
     brand: string,
-    year: string,
-    minPrice: string,
-    maxPrice: string
-
+    year: number,
+    minPrice: number,
+    maxPrice: number
   }>();
 	const prices = [
 		{
-			value: "1000",
+			value: 1000,
 			key: "1,000",
 		},
 		{
-			value: "3000",
+			value: 3000,
 			key: "3,000",
 		},
 		{
-			value: "5000",
+			value: 5000,
 			key: "5,000",
 		},
 		{
-			value: "8000",
+			value: 8000,
 			key: "8,000",
 		},
 		{
-			value: "12000",
+			value: 12000,
 			key: "13,000",
 		},
 		{
-			value: "17000",
+			value: 17000,
 			key: "17,000",
 		},
 		{
-			value: "25000",
+			value: 25000,
 			key: "25,000",
 		},
 		{
-			value: "30000",
+			value: 30000,
 			key: "30,000",
 		},
 	];
 
 	const years = [
-		"2000",
-		"2001",
-		"2002",
-		"2003",
-		"2004",
-		"2005",
-		"2006",
-		"2007",
-		"2008",
-		"2009",
-		"2010",
-		"2011",
-		"2012",
-		"2013",
-		"2014",
-		"2015",
-		"2016",
-		"2017",
-		"2018",
-		"2019",
-		"2020",
-		"2020",
+		2000,
+		2001,
+		2002,
+		2003,
+		2004,
+		2005,
+		2006,
+		2007,
+		2008,
+		2009,
+		2010,
+		2011,
+		2012,
+		2013,
+		2014,
+		2015,
+		2016,
+		2017,
+		2018,
+		2019,
+		2020,
+		2020,
 	];
 
 	const handleFormChange = (
