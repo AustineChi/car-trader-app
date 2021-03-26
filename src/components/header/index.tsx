@@ -23,6 +23,11 @@ export const Header = () => {
 					</Link>
 				</div>
 				<div>
+					<Link href="/cart">
+						<a>Cart</a>
+					</Link>
+				</div>
+				<div>
 					<Link href="/faq">
 						<a>Faq</a>
 					</Link>

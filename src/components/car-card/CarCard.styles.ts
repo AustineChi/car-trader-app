@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Car = styled.div`
     padding: 10px;
-    width: 270px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -19,6 +19,9 @@ export const Car = styled.div`
 export const CarImage = styled.img`
     width: 100%;
     height: 200px;
+    object-fit: cover;
+    &:hover {
+        object-fit: contain;
 }
 `;
 
@@ -31,4 +34,20 @@ export const CarName = styled.div`
     box-sizing: border-box;
 }
 
+`;
+
+
+export const Button = styled.button`
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+    border-radius: 100px;
+    background: #000;
+    color: #fff;
+    display: block;
+    width: 100%
 `;

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import { CarModel } from "../../models/Car";
+import { BrandModel } from "../../models/Brand";
 import { openDB } from "../openDB";
 import {Header} from "../components/header";
 import {CarCard} from "../components/car-card";
@@ -11,19 +12,21 @@ import { CarsWrapper } from "../../styles/Home.styles";
 
 interface CarsProps {
 	cars: CarModel[];
+	brands: BrandModel[]
 }
 
-export default function Home({cars}: CarsProps) {
+export default function Home({cars, brands}: CarsProps) {
 
 	const filterFunction =  (e: React.FormEvent, formData: {}) => {
 		e.preventDefault()
 		console.log(formData)
+
 	  }
 	return (
 		<Container>
 		   <Header/>
 			<Title>Buy the best cars!</Title>
-			<FilterForm  filterFunction={filterFunction} />
+			<FilterForm  filterFunction={filterFunction} brands={brands} />
 			<CarsWrapper>
 			{cars.map((car, id) => (
 					<CarCard key={id} car={car}/>
@@ -36,5 +39,7 @@ export default function Home({cars}: CarsProps) {
 export const getStaticProps: GetStaticProps = async () => {
 	const db = await openDB();
 	const cars = await db.all('SELECT * FROM Car');
-	return { props: { cars } };
+	const brands = await db.all('SELECT make, count(*) as count FROM Car GROUP BY make');
+
+	return { props: { cars, brands } };
 };
