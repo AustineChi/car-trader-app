@@ -72,7 +72,8 @@ export default function Home({ cars, brands }: CarsProps) {
 	);
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+   
 	const cars = await fetcher("http://localhost:3000/api/cars");
 	const brands = await fetcher("http://localhost:3000/api/brands");
 
